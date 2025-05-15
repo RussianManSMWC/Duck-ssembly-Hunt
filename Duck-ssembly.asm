@@ -162,13 +162,13 @@ STY StartHeldFlag                                           ;we definitely press
 LDY GameplayMode                                            ;check which gameplay mode we're at
 CPY #GameplayMode_Pause                                     ;check if we were already in paused state
 BEQ CODE_C0FF                                               ;unpause
-CPY #$03
+CPY #GameplayMode_DuckGameMain                              ;shooting ducks
 BEQ CODE_C0DF                                               ;can pause
-CPY #$04
+CPY #GameplayMode_RoundEnd_DuckGame                         ;and at the end of a round
 BEQ CODE_C0DF                                               ;can pause
-CPY #$0B
+CPY #GameplayMode_ClayShootingMain                          ;shooting clay pigeons
 BEQ CODE_C0DF                                               ;can pause
-CPY #$0C
+CPY #GameplayMode_RoundEnd_ClayShooting                     ;and at the end of a round
 BNE CODE_C123                                               ;can pause
 
 CODE_C0DF:
